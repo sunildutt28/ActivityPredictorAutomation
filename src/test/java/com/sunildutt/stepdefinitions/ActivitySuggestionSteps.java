@@ -1,0 +1,46 @@
+package com.sunildutt.stepdefinitions;
+
+import com.sunildutt.pages.HomePage;
+import com.sunildutt.tests.BaseTest;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.junit.jupiter.api.Assertions;
+
+public class ActivitySuggestionSteps extends BaseTest {
+
+    private HomePage homePage;
+
+    @Given("the Activity Predictor application is open")
+    public void openApplication() {
+
+        homePage = new HomePage(driver);
+
+    }
+
+    @When("I enter {string} as the city")
+    public void enterCity(String city) {
+
+        homePage.enterCity(city);
+
+    }
+
+    @When("I click the Get Activity Suggestion button")
+    public void clickButton() {
+
+        homePage.clickActivitySuggestion();
+
+    }
+
+    @Then("an activity suggestion should be displayed")
+    public void verifySuggestion() {
+
+        String suggestion = homePage.getActivitySuggestion();
+
+        System.out.println("Activity: " + suggestion);
+
+        Assertions.assertFalse(suggestion.isBlank());
+
+    }
+
+}
