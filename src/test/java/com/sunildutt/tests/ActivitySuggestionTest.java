@@ -1,6 +1,7 @@
 package com.sunildutt.tests;
 
 import com.sunildutt.pages.HomePage;
+import com.sunildutt.utils.ScreenshotUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -28,6 +29,12 @@ public class ActivitySuggestionTest extends BaseTest {
         HomePage home = new HomePage(driver);
 
         home.enterCity("Dublin");
+
+        String screenshot =
+                ScreenshotUtils.capture(driver,
+                        "BeforePrediction");
+
+        System.out.println(screenshot);
 
         home.clickActivitySuggestion();
 
