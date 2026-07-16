@@ -1,20 +1,20 @@
 package com.sunildutt.stepdefinitions;
 
+import com.sunildutt.base.DriverManager;
 import com.sunildutt.pages.HomePage;
-import com.sunildutt.tests.BaseTest;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 
-public class ActivitySuggestionSteps extends BaseTest {
+public class ActivitySuggestionSteps {
 
     private HomePage homePage;
 
     @Given("the Activity Predictor application is open")
     public void openApplication() {
 
-        homePage = new HomePage(driver);
+        homePage = new HomePage(DriverManager.getDriver());
 
     }
 
@@ -42,5 +42,4 @@ public class ActivitySuggestionSteps extends BaseTest {
         Assertions.assertFalse(suggestion.isBlank());
 
     }
-
 }

@@ -1,51 +1,63 @@
 package com.sunildutt.base;
 
+import com.sunildutt.utils.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class BasePage {
 
     protected WebDriver driver;
-    protected WebDriverWait wait;
+    protected WaitUtils waitUtils;
 
     public BasePage(WebDriver driver) {
+
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        this.waitUtils = new WaitUtils(driver);
+
     }
 
     protected WebElement find(By locator) {
-        return wait.until(
-                ExpectedConditions.visibilityOfElementLocated(locator));
+
+        return waitUtils.waitForVisibility(locator);
+
     }
-    protected String getText(By locator) {
-        return find(locator).getText();
-    }
+
     protected void click(By locator) {
-        find(locator).click();
+
+        waitUtils.waitForClickable(locator).click();
+
     }
 
     protected void type(By locator, String text) {
 
-        WebElement element = find(locator);
+        WebElement element = waitUtils.waitForVisibility(locator);
 
         element.click();
         element.sendKeys(Keys.CONTROL + "a");
         element.sendKeys(Keys.DELETE);
         element.sendKeys(text);
-        element.sendKeys(Keys.TAB);
+
+    }
+
+    protected String getText(By locator) {
+
+        return waitUtils.waitForVisibility(locator).getText();
+
     }
 
     protected String getValue(By locator) {
-        return find(locator).getAttribute("value");
+
+        return waitUtils.waitForVisibility(locator)
+                .getAttribute("value");
+
     }
 
     protected boolean isDisplayed(By locator) {
-        return find(locator).isDisplayed();
+
+        return waitUtils.waitForVisibility(locator)
+                .isDisplayed();
+
     }
 }
