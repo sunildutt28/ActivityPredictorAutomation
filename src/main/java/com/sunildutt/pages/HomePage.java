@@ -3,6 +3,7 @@ package com.sunildutt.pages;
 import com.sunildutt.base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import com.sunildutt.reporting.ReportManager;
 
 public class HomePage extends BasePage {
 
@@ -20,13 +21,18 @@ public class HomePage extends BasePage {
 
 
     public void enterCity(String city) {
+
+        ReportManager.info("Entering city: " + city);
+
         type(cityInput, city);
     }
 
     public String getCity() {
+
         return getValue(cityInput);
     }
     public void clickActivitySuggestion() {
+        ReportManager.info("Clicking Activity Suggestion button");
 
         click(activitySuggestionButton);
 

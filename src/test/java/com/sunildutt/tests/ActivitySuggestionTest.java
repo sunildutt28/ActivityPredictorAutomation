@@ -1,6 +1,7 @@
 package com.sunildutt.tests;
 
 import com.sunildutt.pages.HomePage;
+import com.sunildutt.reporting.ReportManager;
 import com.sunildutt.utils.ScreenshotUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -45,6 +46,10 @@ public class ActivitySuggestionTest extends BaseTest {
 
         Assertions.assertTrue(
                 suggestion.length() > 5);
+        Assertions.assertFalse(suggestion.isBlank());
+
+        ReportManager.pass(
+                "Activity suggested: " + suggestion);
 
     }
 }
