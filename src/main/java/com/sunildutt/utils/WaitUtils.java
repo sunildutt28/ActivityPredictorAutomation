@@ -14,7 +14,7 @@ public class WaitUtils {
 
     public WaitUtils(WebDriver driver) {
 
-        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
     }
 
@@ -37,6 +37,17 @@ public class WaitUtils {
         return wait.until(
                 ExpectedConditions.textToBePresentInElementLocated(locator, text));
 
+    }
+
+    public String waitForTextToChange(By locator, String oldText) {
+
+        return wait.until(driver -> {
+
+            String newText = driver.findElement(locator).getText().trim();
+
+            return !newText.equals(oldText) ? newText : null;
+
+        });
     }
 
 }

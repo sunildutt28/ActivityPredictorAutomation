@@ -1,0 +1,10 @@
+application:
+  url: http://localhost:8501
+
+browser:
+  name: chrome
+  headless: false
+
+timeouts:
+  implicit: 10
+  explicit: 30

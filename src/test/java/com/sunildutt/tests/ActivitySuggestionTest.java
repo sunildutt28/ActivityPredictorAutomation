@@ -1,8 +1,10 @@
 package com.sunildutt.tests;
 
+import com.sunildutt.config.Configuration;
 import com.sunildutt.pages.HomePage;
 import com.sunildutt.reporting.ReportManager;
 import com.sunildutt.utils.ScreenshotUtils;
+import com.sunildutt.utils.YamlReader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +25,19 @@ public class ActivitySuggestionTest extends BaseTest {
 
         Thread.sleep(3000);
     }
+    @Test
+    public void testYamlReader() {
 
+        Configuration config =
+                YamlReader.getConfiguration();
+
+        System.out.println(config.getBrowser().getName());
+
+        System.out.println(config.getApplication().getUrl());
+
+        System.out.println(config.getTimeouts().getExplicit());
+
+    }
     @Test
     public void verifyActivitySuggestion() {
 
