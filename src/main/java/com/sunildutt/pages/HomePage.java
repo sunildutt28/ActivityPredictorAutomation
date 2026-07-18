@@ -1,16 +1,18 @@
 package com.sunildutt.pages;
 
 import com.sunildutt.base.BasePage;
+import com.sunildutt.utils.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import com.sunildutt.reporting.ReportManager;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage {
 
     private final By cityInput =
             By.cssSelector("input[aria-label='City Name']");
     private final By activitySuggestion =
-            By.tagName("h1");
+            By.xpath("(//h1)[last()]");
     private final By activitySuggestionButton =
             By.cssSelector("button[data-testid='stBaseButton-primary']");
 
@@ -39,7 +41,10 @@ public class HomePage extends BasePage {
     }
     public String getActivitySuggestion() {
 
-        return getText(activitySuggestion);
+        WaitUtils waitUtils = new WaitUtils(driver);
 
+        String oldText = getText(activitySuggestion);
+
+        return waitUtils.waitForTextToChange(activitySuggestion, oldText);
     }
 }
