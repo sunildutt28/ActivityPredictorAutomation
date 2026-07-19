@@ -20,7 +20,8 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-
+    private final By errorMessage =
+            By.xpath("//p[contains(text(),'Failed to fetch weather data')]");
 
     public void enterCity(String city) {
 
@@ -46,5 +47,11 @@ public class HomePage extends BasePage {
         String oldText = getText(activitySuggestion);
 
         return waitUtils.waitForTextToChange(activitySuggestion, oldText);
+    }
+    public String getErrorMessage() {
+
+        return waitUtils.waitForVisibility(errorMessage)
+                .getText()
+                .trim();
     }
 }

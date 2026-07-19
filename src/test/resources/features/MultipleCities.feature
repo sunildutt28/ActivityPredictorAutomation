@@ -10,8 +10,8 @@ Feature:  Multiple city Activity Suggestion
 
     Examples:
       | city     |
-      | Dublin   |
+      | Paris   |
       | Cork     |
       | Galway   |
-      | Limerick |
+      | London |
 

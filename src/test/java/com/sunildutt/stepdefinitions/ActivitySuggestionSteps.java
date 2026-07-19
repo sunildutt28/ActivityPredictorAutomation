@@ -6,6 +6,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Assertions;
 
 public class ActivitySuggestionSteps {
 
@@ -42,4 +43,13 @@ public class ActivitySuggestionSteps {
         Assertions.assertFalse(suggestion.isBlank());
 
     }
+
+    @Then("the text {string} should be displayed")
+    public void the_text_should_be_displayed(String expectedMessage) {
+        String expectedText = "Failed to fetch weather data";
+        String actualMessage = homePage.getErrorMessage();
+
+        Assertions.assertEquals(expectedText, actualMessage.trim());
+    }
+   
 }
