@@ -16,6 +16,6 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
         value = "com.sunildutt.stepdefinitions")
 @ConfigurationParameter(
         key = PLUGIN_PROPERTY_NAME,
-        value = "pretty, html:target/cucumber-report.html")
+        value = "pretty,html:target/cucumber-report.html")
 public class TestRunner {
 }
