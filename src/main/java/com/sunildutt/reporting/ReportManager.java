@@ -44,7 +44,6 @@ public class ReportManager {
             throw new RuntimeException(e);
 
         }
-
     }
 
     public static void flush() {
