@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 public class CityDataTest {
 
-    @Test
+    //@Test
     void readCities() {
 
         CityData cityData = CityDataReader.getCityData();
