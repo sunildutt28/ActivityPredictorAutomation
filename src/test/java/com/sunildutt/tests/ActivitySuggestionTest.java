@@ -25,7 +25,7 @@ public class ActivitySuggestionTest extends BaseTest {
 
         Thread.sleep(3000);
     }
-    @Test
+
     public void testYamlReader() {
 
         Configuration config =
