@@ -1,4 +1,4 @@
-@@regression
+@regression
 Feature:  Multiple city Activity Suggestion
 
   Scenario Outline: User gets an activity suggestion for multiple cities
