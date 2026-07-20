@@ -48,9 +48,11 @@ public class HomePage extends BasePage {
 
         return waitUtils.waitForTextToChange(activitySuggestion, oldText);
     }
-    public String getErrorMessage() {
+    public String getMessage(String expectedText) {
 
-        return waitUtils.waitForVisibility(errorMessage)
+        By locator = By.xpath("//p[contains(text(),'" + expectedText + "')]");
+
+        return waitUtils.waitForVisibility(locator)
                 .getText()
                 .trim();
     }

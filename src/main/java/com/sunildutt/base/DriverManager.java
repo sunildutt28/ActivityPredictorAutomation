@@ -4,25 +4,32 @@ import org.openqa.selenium.WebDriver;
 
 public class DriverManager {
 
-    private static WebDriver driver;
+    private static final ThreadLocal<WebDriver> driver =
+            new ThreadLocal<>();
 
-    // Private constructor prevents object creation
     private DriverManager() {
     }
 
     public static void setDriver(WebDriver webDriver) {
-        driver = webDriver;
+
+        driver.set(webDriver);
+
     }
 
     public static WebDriver getDriver() {
-        return driver;
+
+        return driver.get();
+
     }
 
     public static void quitDriver() {
 
-        if (driver != null) {
-            driver.quit();
-            driver = null;
+        if (driver.get() != null) {
+
+            driver.get().quit();
+
+            driver.remove();
+
         }
     }
 }

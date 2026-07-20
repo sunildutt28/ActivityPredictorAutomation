@@ -19,6 +19,9 @@ public class Hooks {
         // Start Extent Report for this scenario
         ReportManager.startTest(scenario.getName());
 
+        ReportManager.info("Starting Scenario : "
+                + scenario.getName());
+
         DriverFactory.getDriver(config.getBrowser());
 
         ReportManager.info("Browser launched: " + config.getBrowser());
@@ -42,19 +45,21 @@ public class Hooks {
                             DriverManager.getDriver(),
                             scenario.getName());
 
-            ReportManager.fail("Scenario Failed");
+            ReportManager.fail(
+                    "Scenario Failed : " + scenario.getName());
 
             ReportManager.attachScreenshot(screenshot);
 
         } else {
 
-            ReportManager.pass("Scenario Passed");
+            ReportManager.pass(
+                    "Scenario Passed : " + scenario.getName());
 
         }
 
-        ReportManager.flush();
-
         DriverManager.quitDriver();
+
+        ReportManager.flush();
 
     }
 }

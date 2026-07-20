@@ -45,11 +45,11 @@ public class ActivitySuggestionTest extends BaseTest {
 
         home.enterCity("Dublin");
 
-        String screenshot =
-                ScreenshotUtils.capture(driver,
-                        "BeforePrediction");
+       // String screenshot =
+         //       ScreenshotUtils.capture(driver,
+           //             "BeforePrediction");
 
-        System.out.println(screenshot);
+        //System.out.println(screenshot);
 
         home.clickActivitySuggestion();
 

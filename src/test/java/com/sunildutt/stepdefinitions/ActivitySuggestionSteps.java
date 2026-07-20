@@ -45,9 +45,9 @@ public class ActivitySuggestionSteps {
     }
 
     @Then("the text {string} should be displayed")
-    public void the_text_should_be_displayed(String expectedMessage) {
-        String expectedText = "Failed to fetch weather data";
-        String actualMessage = homePage.getErrorMessage();
+    public void the_text_should_be_displayed(String expectedText) {
+
+        String actualMessage = homePage.getMessage(expectedText);
 
         Assertions.assertEquals(expectedText, actualMessage.trim());
     }
