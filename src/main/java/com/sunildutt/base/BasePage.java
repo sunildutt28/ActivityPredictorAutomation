@@ -24,10 +24,9 @@ public class BasePage {
 
     }
 
-    protected void click(By locator) {
-
-        waitUtils.waitForClickable(locator).click();
-
+    public void click(By locator) {
+        WebElement element = waitUtils.waitForClickable((locator));
+        element.click();
     }
 
     protected void type(By locator, String text) {
